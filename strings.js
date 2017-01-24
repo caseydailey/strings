@@ -30,17 +30,21 @@ function runIt () {
 //that reverses the order of the characters in the string, 
 //and outputs the result in the DOM, below the text input.
 
-function reversal(string) {
+function reversal(string) {	
 	
-	console.log('testString:', testString);
-
+//split returns an array with each letter an item
 	let split = string.split("");
-	console.log('split:', split);
+	
+//then we can apply some basic array methods to get where we want
 	let	reversed = split.reverse();
-	console.log('reversed:', reversed);
+	
+//we then join
 	let	joined = reversed.join("");
-	console.log('joined:', joined);
+
+//a little re-assignment for clarity	
 	let reversedString = joined;
+
+//and put it in the DOM
 	output.innerHTML = `<p>reversed: ${reversedString}<p>`;
 
 }
@@ -51,13 +55,15 @@ function reversal(string) {
 
 function alphabits(string) {
 
+//again, split gets us an array
 	let split = string.split("");
-	console.log('split:', split);
+//sort naturally returns an alphabetized array	
 	let sorted = split.sort();
-	console.log('sorted:', sorted);
+//join makes it be a string again	
 	let joined = sorted.join("");
-	console.log('joined:', joined);
+//a little re-assignment for clarity	
 	let alphabetized = joined;
+//and put it in the DOM
 	output.innerHTML += `<p>alphabetized: ${alphabetized}</p>`;
 
 }
@@ -70,16 +76,16 @@ function alphabits(string) {
 
 function palindrome(string) {
 
+//same initial logic as reversal
 		let split = string.split("");
-		console.log('split:', split);
 		let	reversed = split.reverse();
-		console.log('reversed:', reversed);
 		let	joined = reversed.join("");
-		console.log('joined:', joined);
 		let reversedString = joined;
 
+//get a message ready
 		let message = "your string is a palindrome!";
 
+//compare with a ternary operator
 		(reversedString == string) ? output.innerHTML = message : null;
 }
 

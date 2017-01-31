@@ -18,10 +18,16 @@ form.addEventListener("keypress", e => (e.keyCode == 13) ? runIt() : null);
 function runIt () {
 	
 	testString = input.value;
-	console.log('testSting:', testString);
+
+	if (isNaN(testString)) {
+	console.log('testString:', testString);
 	reversal(testString);
 	alphabits(testString);
 	palindrome(testString);
+
+	} else {
+		alert("letters only please");
+	}
 
 }
 
@@ -33,18 +39,7 @@ function runIt () {
 function reversal(string) {	
 	
 //split returns an array with each letter an item
-	let split = string.split("");
-	
-//then we can apply some basic array methods to get where we want
-	let	reversed = split.reverse();
-	
-//we then join
-	let	joined = reversed.join("");
-
-//a little re-assignment for clarity	
-	let reversedString = joined;
-
-//and put it in the DOM
+	let reversedString = string.split("").reverse().join("");
 	output.innerHTML = `<p>reversed: ${reversedString}<p>`;
 
 }
@@ -56,14 +51,7 @@ function reversal(string) {
 function alphabits(string) {
 
 //again, split gets us an array
-	let split = string.split("");
-//sort naturally returns an alphabetized array	
-	let sorted = split.sort();
-//join makes it be a string again	
-	let joined = sorted.join("");
-//a little re-assignment for clarity	
-	let alphabetized = joined;
-//and put it in the DOM
+	let alphabetized = string.split("").sort().join("");
 	output.innerHTML += `<p>alphabetized: ${alphabetized}</p>`;
 
 }
@@ -77,15 +65,8 @@ function alphabits(string) {
 function palindrome(string) {
 
 //same initial logic as reversal
-		let split = string.split("");
-		let	reversed = split.reverse();
-		let	joined = reversed.join("");
-		let reversedString = joined;
-
-//get a message ready
+		let reversedString = string.split("").reverse().join("");
 		let message = "your string is a palindrome!";
-
-//compare with a ternary operator
 		(reversedString == string) ? output.innerHTML = message : null;
 }
 

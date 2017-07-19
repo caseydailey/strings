@@ -66,8 +66,9 @@ function palindrome(string) {
 
 //same initial logic as reversal
 		let reversedString = string.split("").reverse().join("");
-		let message = "your string is a palindrome!";
-		(reversedString == string) ? output.innerHTML = message : null;
+		let palindrome = "your string is a palindrome!";
+		let not_palindrome = "your string is not a palindrome!";
+		output.innerHTML += reversedString == string ? palindrome : not_palindrome;
 }
 
 

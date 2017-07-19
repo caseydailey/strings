@@ -13,62 +13,44 @@ const output = document.getElementById("output");
 button.addEventListener("click", runIt);
 form.addEventListener("keypress", e => (e.keyCode == 13) ? runIt() : null);
 
-//let testString = null;
+
+function reversal(string) {	
+	let reversedString = string.split("").reverse().join("");
+	return reversedString;
+}
+
+
+function alphabits(string) {
+	let alphabetized = string.split("").sort().join("");
+	return alphabetized;
+}
+
+
+function palindrome(string) {
+		let reversedString = reversal(string);
+		return reversedString == string ? true : false;
+}
 
 function runIt () {
 	
-	testString = input.value;
+	let str = input.value;
 
-	if (isNaN(testString)) {
-	console.log('testString:', testString);
-	reversal(testString);
-	alphabits(testString);
-	palindrome(testString);
+	if (isNaN(str)) {
+
+	let alpha = alphabits(str);
+	let rev = reversal(str);
+	let pal = palindrome(str);
+
+	output.innerHTML = `<p>alphabetized: ${alpha}</p>
+						<p>reversed: ${rev}</p>
+						<p>palindrome: ${pal}</p>`;
+	input.value = "";
 
 	} else {
 		alert("letters only please");
+		input.value = "";
+		output.innerHTML = "";
 	}
-
-}
-
-
-//Implement the logic in the reversal function 
-//that reverses the order of the characters in the string, 
-//and outputs the result in the DOM, below the text input.
-
-function reversal(string) {	
-	
-//split returns an array with each letter an item
-	let reversedString = string.split("").reverse().join("");
-	output.innerHTML = `<p>reversed: ${reversedString}<p>`;
-
-}
-
-//Implement the logic in the alphabits function 
-//that return the characters in alphabetical order, 
-//and outputs the result in the DOM, below the text input.
-
-function alphabits(string) {
-
-//again, split gets us an array
-	let alphabetized = string.split("").sort().join("");
-	output.innerHTML += `<p>alphabetized: ${alphabetized}</p>`;
-
-}
-
-
-//Implement the logic in the palindrome function 
-//that determine whether the string is a palindrome. 
-//If it is, display the text "Your string is a palidrome" in the DOM, 
-//below the text input.
-
-function palindrome(string) {
-
-//same initial logic as reversal
-		let reversedString = string.split("").reverse().join("");
-		let palindrome = "your string is a palindrome!";
-		let not_palindrome = "your string is not a palindrome!";
-		output.innerHTML += reversedString == string ? palindrome : not_palindrome;
 }
 
 
